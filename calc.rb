@@ -5,3 +5,4 @@ puts 365*35*24*60*60
 puts 943000000/60/60/24/365
 tb = Time.now - 943000000
 puts Time.now.year - tb.year - 1
+
