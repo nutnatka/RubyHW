@@ -39,6 +39,7 @@ n= name.length+patronymik.length+surname.length
 puts s1+n.to_s+s2
 puts "А Вы знаете, что Ваше имя состоит c "+ (name.length+patronymik.length+surname.length).to_s+" символов?"
 =end 
+
 =begin
 puts "Что Вы от меня хотите?"
 answer=gets.chomp
@@ -47,7 +48,7 @@ puts "Вопросы еще будут?"
 question=gets.chomp
 puts "Что значит "+question+"? Ви уволены!"
 =end
-
+=begin
 name = ""
 while name == "" do
     puts "Добрый день, подскажите Ваше имя?"
@@ -55,7 +56,7 @@ while name == "" do
 
 end
 puts "Рада познакомится с Вами "+name+"! :)"
-
+=end
 
 =begin
 begin
@@ -75,4 +76,11 @@ until name != ""
 end
 =end
 
-    
+arr = [58,25,11,-8,4,18,-15,49, 0,-40,36,-25,6,10,-4,-40]
+#k = gets.chomp.to_i
+k=-48
+result = arr.rindex {|el| el < k} 
+puts "----------------------
+#97Дан целочисленный массив и число К. Вывести индекс последнего элемента, меньшего К.
+[58,25,11,-8,4,18,-15,49, 0,-40,36,-25,6,10,-4,58,-4,-40]
+result: #{result}"
