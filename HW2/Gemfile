@@ -1,0 +1,2 @@
+require 'bundler'
+gem 'htmlgem', git: 'https://github.com/nutnatka/RubyHW/', glob: 'HW3/gem2/*.gemspec'
