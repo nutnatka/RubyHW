@@ -1,5 +1,5 @@
 class Integer
-  def fourty_two
+  def fourty_two?
     self == 42
   end
 end
