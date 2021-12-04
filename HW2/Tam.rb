@@ -4,8 +4,8 @@ class Pet
 
   def initialize(name)
     @name = name
-    @life = 100 #жизнь
-    @healthy = 10 #здоровье
+    @life = 20 #жизнь
+    @healthy = 100 #здоровье
     @anger = 10 # злость
     @tired = 10 # усталость
     @enjoy = 2  #  Он наслаждается
@@ -17,50 +17,50 @@ class Pet
 
   def food
     puts "#{@name} has breackfast."
-    stepByStep({hungry:-5, enjoy:3})
+    stepByStep(hungry: -5, enjoy: 3)
   end
 
   def berate
     puts "Вы ругаете #{@name}."
-    stepByStep({hungry:5, enjoy:-7})
+    stepByStep(hungry: 5, enjoy: -7)
   end
 
   def takeToTheVet
     puts "Доктор осматривает #{@name}."
-    stepByStep({hungry:5, enjoy:-7, healthy:5})
+    stepByStep(hungry: 5, enjoy: -7, healthy: 5)
   end
 
   def walk
-    stepByStep({hungry:5, enjoy:4})
+    stepByStep(hungry: 5, enjoy: 4)
   end
 
   def readingABook
     puts "Вы читаете сказку #{@name}"
-    stepByStep({hungry:4, enjoy:5})
+    stepByStep(hungry: 4, enjoy: 5)
   end
 
   def cleaningTheRoom
     puts "Вы убираете в комнате #{@name}"
-    stepByStep({hungry:7, enjoy:-3, anger:2})
+    stepByStep(hungry: 7, enjoy: -3, anger: 2)
   end
 
   def tellStoriesb
-    stepByStep({hungry:5, enjoy:4})
+    stepByStep(hungry: 5, enjoy: 4)
   end
 
   def jumpingThroughPuddles
     puts "Вы прыгаете по лужах #{@name}"
-    stepByStep({hungry:5, enjoy:4, healthy:-3})
+    stepByStep(hungry: 5, enjoy: 4, healthy: -3)
   end
 
   def goToGrooming
     puts "Вы идете на стрижку #{@name}"
-    stepByStep({hungry:7, enjoy:4})
+    stepByStep(hungry: 7, enjoy: 4)
   end
 
   def putToBed
     puts "Вы укладываете спать #{@name}"
-    stepByStep({hungry:10, enjoy:7,healthy:10})
+    stepByStep(hungry: 10, enjoy: 7, healthy: 10)
   end
 
   def hungry?
@@ -68,7 +68,7 @@ class Pet
   end
 
   def death?
-    @life <= 0
+    @life <= 0 || @healthy <= 0
   end
 
   def say
@@ -84,15 +84,15 @@ class Pet
   private
 
   def stepByStep(properties)
-    @healthy += properties[:healthy] if !properties[:healthy].nil?
-    if !properties[:hungry].nil?
+    @healthy += properties[:healthy] if properties.key?(:healthy)
+    if properties.key?(:hungry)
       @hungry[:v] += properties[:hungry]
       @hungry[:t] = Time.now
     end
-    if @hungry[:v] > 5
+    if @hungry[:v] > 5 || @hungry[:v] < -30
       @healthy -= 10
     end
-    @enjoy += properties[:enjoy] if !properties[:enjoy].nil?
+    @enjoy += properties[:enjoy] if properties.key?(:enjoy)
     @healthy -= 1
     @life -= 1
   end
@@ -100,29 +100,29 @@ end
 
 class Dog < Pet
   def say
-    puts "гав-гав"
-    puts super + " - (по-собачьи)" if !super.nil?
+    puts 'гав-гав'
+    puts super + " - (по-собачьи)" unless super.nil?
   end
 end
 
 class Cat < Pet
   def say
-    puts "мяу-мяу"
-    puts super + " - (по-кошачему)" if !super.nil?
+    puts 'мяу-мяу'
+    puts super + " - (по-кошачему)" unless super.nil?
   end
 end
 
 class Pig < Pet
   def say
-    puts "хрю-хрю"
-    puts super + " - (по-поросячему)" if !super.nil?
+    puts 'хрю-хрю'
+    puts super + " - (по-поросячему)" unless super.nil?
   end
 end
 
 class Chicken < Pet
   def say
-    puts "ко-ко--ко"
-    puts super + " - (по-куриному)" if !super.nil?
+    puts 'ко-ко--ко'
+    puts super + " - (по-куриному)" unless super.nil?
   end
 end
 
@@ -158,7 +158,7 @@ def choosePetType
     print_pets
     action = gets.chomp.to_i - 1
     result = PETS[action]
-    break if !result.nil?
+    break unless result.nil?
   end
   result
 end
