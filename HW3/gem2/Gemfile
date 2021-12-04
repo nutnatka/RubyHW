@@ -1,2 +1,1 @@
-source 'https://rubygems.org'
 gem 'htmlgem', git: 'https://github.com/nutnatka/RubyHW/', glob: 'HW3/gem2/*.gemspec'
