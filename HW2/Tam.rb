@@ -72,7 +72,7 @@ class Pet
     @life <= 0 || @healthy <= 0
   end
 
-  def say
+  def text
     if death?
       "я умер......."
     elsif @healthy < 10
@@ -80,6 +80,16 @@ class Pet
     elsif hungry?
       "покорми меня"
     end
+  end
+
+  def say
+    puts text
+  end
+
+  def status
+    result = text
+    instance_variables.each { |el| result += "\n#{el}: #{instance_variable_get(el)}"}
+    result
   end
 
   private
@@ -100,30 +110,34 @@ class Pet
 end
 
 class Dog < Pet
-  def say
-    puts 'гав-гав'
-    puts super + " - (по-собачьи)" unless super.nil?
+  def text
+    result = "гав-гав"
+    result += "\n#{super} - (по-собачьи)" unless super.nil?
+    result
   end
 end
 
 class Cat < Pet
-  def say
-    puts 'мяу-мяу'
-    puts super + " - (по-кошачему)" unless super.nil?
+  def text
+    result = "мяу-мяу"
+    result += "\n#{super} - (по-кошачему)" unless super.nil?
+    result
   end
 end
 
 class Pig < Pet
-  def say
-    puts 'хрю-хрю'
-    puts super + " - (по-поросячему)" unless super.nil?
+  def text
+    result = "хрю-хрю"
+    result += "\n#{super} - (по-свинячему)" unless super.nil?
+    result
   end
 end
 
 class Chicken < Pet
-  def say
-    puts 'ко-ко--ко'
-    puts super + " - (по-куриному)" unless super.nil?
+  def text
+    result = "ко-ко-ко"
+    result += "\n#{super} - (по-куриному)" unless super.nil?
+    result
   end
 end
 
@@ -131,8 +145,14 @@ PETS = [Dog, Cat, Pig, Chicken]
 
 def print_main_menu
   Gem.win_platform? ? (system "cls") : (system "clear")
-  puts 'Нажмите 1, если Вы готовы к выбору животного'
-  puts 'Нажмите 0, чтобы выйти с игры'
+  actions = ['Нажмите 1, если Вы готовы к выбору животного',
+             'Нажмите 0, чтобы выйти с игры']
+  content = ""
+  actions.each do |el|
+    puts el
+    content += "<p>#{el}</p>"
+  end
+  # save_content(content)
 end
 
 def print_pets_menu
@@ -180,6 +200,7 @@ pet = type.new(name)
 loop do
   Gem.win_platform? ? (system "cls") : (system "clear")
   p pet
+  save_content("<p>#{pet.status.gsub! "\n", "</p>\n<p>"}</p>")
   if pet.death?
     pet.say
     exit
