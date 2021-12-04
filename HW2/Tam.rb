@@ -1,4 +1,5 @@
 require 'io/console'
+require 'htmlgem'
 
 class Pet
 
