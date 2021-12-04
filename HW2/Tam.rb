@@ -153,14 +153,12 @@ def print_pets
 end
 
 def choosePetType
-  result = nil
   loop do
     print_pets
     action = gets.chomp.to_i - 1
     result = PETS[action]
-    break unless result.nil?
+    return result unless result.nil?
   end
-  result
 end
 
 loop do
