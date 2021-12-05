@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/nutnatka/RubyHW/
-  revision: dec8ac56f5dc1c60710d4e9f7444bf459b4617e2
+  revision: 9d22add592b80f49697bfcb814977d09bc8710cc
   glob: HW3/gem2/*.gemspec
   specs:
     htmlgem (0.0.1)

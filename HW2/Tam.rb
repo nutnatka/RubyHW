@@ -1,4 +1,6 @@
 require 'io/console'
+require 'bundler'
+Bundler.setup
 require 'htmlgem'
 
 class Pet
