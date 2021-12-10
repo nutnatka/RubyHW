@@ -47,7 +47,7 @@ class Pet
     stepByStep(hungry: 7, enjoy: -3, anger: 2)
   end
 
-  def tellStoriesb
+  def tellStories
     stepByStep(hungry: 5, enjoy: 4)
   end
 
@@ -117,6 +117,10 @@ class Dog < Pet
     result += "\n#{super} - (по-собачьи)" unless super.nil?
     result
   end
+
+  def get_emoji_code
+    "&#128054;"
+  end
 end
 
 class Cat < Pet
@@ -124,6 +128,10 @@ class Cat < Pet
     result = "мяу-мяу"
     result += "\n#{super} - (по-кошачему)" unless super.nil?
     result
+  end
+
+  def get_emoji_code
+  "&#128049;"
   end
 end
 
@@ -133,6 +141,10 @@ class Pig < Pet
     result += "\n#{super} - (по-свинячему)" unless super.nil?
     result
   end
+
+  def get_emoji_code
+  "&#128055;"
+  end
 end
 
 class Chicken < Pet
@@ -141,20 +153,19 @@ class Chicken < Pet
     result += "\n#{super} - (по-куриному)" unless super.nil?
     result
   end
+
+  def get_emoji_code
+    "&#128020;"
+  end
 end
 
 PETS = [Dog, Cat, Pig, Chicken]
 
 def print_main_menu
   Gem.win_platform? ? (system "cls") : (system "clear")
-  actions = ['Нажмите 1, если Вы готовы к выбору животного',
-             'Нажмите 0, чтобы выйти с игры']
-  content = ""
-  actions.each do |el|
-    puts el
-    content += "<p>#{el}</p>"
-  end
-  # save_content(content)
+  puts 'Нажмите 1, если Вы готовы к выбору животного'
+  puts 'Нажмите 0, чтобы выйти с игры'
+  puts "🤑"
 end
 
 def print_pets_menu
@@ -202,7 +213,9 @@ pet = type.new(name)
 loop do
   Gem.win_platform? ? (system "cls") : (system "clear")
   p pet
-  save_content("<p>#{pet.status.gsub! "\n", "</p>\n<p>"}</p>")
+  content = "<p>#{pet.get_emoji_code}</p>"
+  content += "<p>#{pet.status.gsub! "\n", "</p>\n<p>"}</p>}"
+  save_content(content, "index.html")
   if pet.death?
     pet.say
     exit
@@ -231,5 +244,3 @@ loop do
     pet.goToGrooming
   end
 end
-
-
