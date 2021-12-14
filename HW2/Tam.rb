@@ -11,8 +11,8 @@ class Pet
     @healthy = 100 #здоровье
     @anger = 10 # злость
     @tired = 10 # усталость
-    @enjoy = 2  #  Он наслаждается
-    @hungry = {v: 0.0, t: Time.now}
+    @enjoy = 2 #  Он наслаждается
+    @hungry = { v: 0.0, t: Time.now }
     @sad = 10.0
   end
 
@@ -76,11 +76,11 @@ class Pet
 
   def text
     if death?
-      "я умер......."
+      'я умер.......'
     elsif @healthy < 10
-      "я умираю!!!"
+      'я умираю!!!'
     elsif hungry?
-      "покорми меня"
+      'покорми меня'
     end
   end
 
@@ -90,7 +90,7 @@ class Pet
 
   def status
     result = text
-    instance_variables.each { |el| result += "\n#{el}: #{instance_variable_get(el)}"}
+    instance_variables.each { |el| result += "\n#{el}: #{instance_variable_get(el)}" }
     result
   end
 
@@ -113,59 +113,59 @@ end
 
 class Dog < Pet
   def text
-    result = "гав-гав"
+    result = 'гав-гав'
     result += "\n#{super} - (по-собачьи)" unless super.nil?
     result
   end
 
   def get_emoji_code
-    "&#128054;"
+    '&#128054;'
   end
 end
 
 class Cat < Pet
   def text
-    result = "мяу-мяу"
+    result = 'мяу-мяу'
     result += "\n#{super} - (по-кошачему)" unless super.nil?
     result
   end
 
   def get_emoji_code
-  "&#128049;"
+    '&#128049;'
   end
 end
 
 class Pig < Pet
   def text
-    result = "хрю-хрю"
+    result = 'хрю-хрю'
     result += "\n#{super} - (по-свинячему)" unless super.nil?
     result
   end
 
   def get_emoji_code
-  "&#128055;"
+    '&#128055;'
   end
 end
 
 class Chicken < Pet
   def text
-    result = "ко-ко-ко"
+    result = 'ко-ко-ко'
     result += "\n#{super} - (по-куриному)" unless super.nil?
     result
   end
 
   def get_emoji_code
-    "&#128020;"
+    '&#128020;'
   end
 end
 
 PETS = [Dog, Cat, Pig, Chicken]
 
 def print_main_menu
-  Gem.win_platform? ? (system "cls") : (system "clear")
+  Gem.win_platform? ? (system 'cls') : (system 'clear')
   puts 'Нажмите 1, если Вы готовы к выбору животного'
   puts 'Нажмите 0, чтобы выйти с игры'
-  puts "🤑"
+  puts '🤑'
 end
 
 def print_pets_menu
@@ -182,7 +182,7 @@ def print_pets_menu
 end
 
 def print_pets
-  Gem.win_platform? ? (system "cls") : (system "clear")
+  Gem.win_platform? ? (system 'cls') : (system 'clear')
   PETS.each_with_index { |el, i| puts "#{el} #{i + 1}" }
 end
 
@@ -198,9 +198,9 @@ end
 loop do
   print_main_menu
   case gets.chomp
-  when "1"
+  when '1'
     break
-  when "0"
+  when '0'
     exit
   end
 end
@@ -211,36 +211,36 @@ name = gets.chomp
 pet = type.new(name)
 
 loop do
-  Gem.win_platform? ? (system "cls") : (system "clear")
+  Gem.win_platform? ? (system 'cls') : (system 'clear')
   p pet
   content = "<p>#{pet.get_emoji_code}</p>"
   content += "<p>#{pet.status.gsub! "\n", "</p>\n<p>"}</p>}"
-  save_content(content, "index.html")
+  save_content(content, 'index.html')
   if pet.death?
     pet.say
     exit
   end
   print_pets_menu
   case gets.chomp
-  when "1"
+  when '1'
     pet.food
-  when "2"
+  when '2'
     pet.berate
-  when "3"
+  when '3'
     pet.walk
-  when "4"
+  when '4'
     pet.takeToTheVet
-  when "5"
+  when '5'
     pet.readingABook
-  when "6"
+  when '6'
     pet.cleaningTheRoom
-  when "7"
+  when '7'
     pet.tellStories
-  when "8"
+  when '8'
     pet.putToBed
-  when "9"
+  when '9'
     pet.jumpingThroughPuddles
-  when "10"
+  when '10'
     pet.goToGrooming
   end
 end

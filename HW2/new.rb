@@ -17,22 +17,22 @@
 
 
 
-#puts arr.count
-#puts arr.reverse
-#puts arr.max
-#puts arr.min
-#puts arr.sort
-#puts arr.sort.reverse
-#puts arr.delete_if { | el | el.odd? }
-#puts arr.map { | el | el  if el%3 == 0 }
-#puts arr.map { | el | el/10.to_f }
-#puts arr.map { | el|  if count el = 1
-=begin
+puts arr.count
+puts arr.reverse
+puts arr.max
+puts arr.min
+puts arr.sort
+puts arr.sort.reverse
+puts arr.delete_if { | el | el.odd? }
+puts arr.map { | el | el  if el%3 == 0 }
+puts arr.map { | el | el/10.to_f }
+puts arr.map { | el|  if count el = 1
+
 arrChar = ('A'..'z').to_a
 result = arrChar.select { |element| arr.include? arrChar.index(element)}
 puts result
-=end
-#arr[arr.index(arr.min)], arr[arr.index(arr.max)] = arr[arr.index(arr.max)], arr[arr.index(arr.min)]
-#puts "#{arr}"
-#puts arr[0...arr.index(arr.min)]
-#puts arr.min(3)
+
+arr[arr.index(arr.min)], arr[arr.index(arr.max)] = arr[arr.index(arr.max)], arr[arr.index(arr.min)]
+puts "#{arr}"
+puts arr[0...arr.index(arr.min)]
+puts arr.min(3)
