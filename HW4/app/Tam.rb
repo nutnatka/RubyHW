@@ -39,6 +39,22 @@ class Pet
       case @req.params['action']
       when 'food'
         food
+      when 'berate'
+        berate
+      when 'walk'
+        walk
+      when 'takeToTheVet'
+        takeToTheVet
+      when 'readingABook'
+        readingABook
+      when 'cleaningTheRoom'
+        cleaningTheRoom
+      when 'tellStories'
+       tellStories
+      when 'putToBed'
+        putToBed
+      when 'jumpingThroughPuddles'
+        jumpingThroughPuddles
       end
     else
       Rack::Response.new('Not Found', 404)
@@ -63,6 +79,34 @@ class Pet
 
   def food
     stepByStep(hungry: -5, enjoy: 3)
+    end
+
+  def berate
+    stepByStep(hungry: 5, enjoy: -7)
+  end
+
+  def takeToTheVet
+    stepByStep(hungry: 5, enjoy: -7, healthy: 5)
+  end
+
+  def walk
+    stepByStep(hungry: 5, enjoy: 4)
+  end
+
+  def readingABook
+    stepByStep(hungry: 4, enjoy: 5)
+  end
+
+  def cleaningTheRoom
+    stepByStep(hungry: 7, enjoy: -3, anger: 2)
+  end
+
+  def tellStories
+    stepByStep(hungry: 5, enjoy: 4)
+  end
+
+  def jumpingThroughPuddles
+    stepByStep(hungry: 5, enjoy: 4, healthy: -3)
   end
 
   def death?(life, healthy)
