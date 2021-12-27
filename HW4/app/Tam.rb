@@ -34,7 +34,7 @@ class Pet
       Rack::Response.new(render("over.html.erb"))
 
     when '/start'
-      Rack::Response.new(render("index.html.erb"))
+      Rack::Response.new(render("index.html.erb.erb"))
     when '/change'
       case @req.params['action']
       when 'food'

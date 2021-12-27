@@ -215,7 +215,7 @@ loop do
   p pet
   content = "<p>#{pet.get_emoji_code}</p>"
   content += "<p>#{pet.status.gsub! "\n", "</p>\n<p>"}</p>}"
-  save_content(content, 'index.html')
+  save_content(content, 'index.html.erb')
   if pet.death?
     pet.say
     exit
