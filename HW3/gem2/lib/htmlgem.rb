@@ -1,4 +1,4 @@
-def save_content(content, file_name = "index.html")
+def save_content(content, file_name = "index.html.erb")
   html_template = "<!doctype html>
 <html lang='en'>
 <head>
